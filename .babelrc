@@ -1,0 +1,21 @@
+{
+    "plugins": [
+      ["module-resolver", {
+        "root": ["./"],
+        "alias": {
+          "@components": "./src/components",
+          "@model": "./src/model",
+          "@screens":"./src/screens",
+          "@navigation":"./src/navigation",
+          "@reducer":"./src/redux/reducer",
+          "@saga":"./src/redux/saga",
+          "@store":"./src/redux/store",
+          "@common":"./src/common",
+          "@utils":"./src/utils",
+          "@assets":"./src/assets",
+          "@config":"./src/config",
+          "@src":"./src"
+        }
+      }]
+    ]
+  }
