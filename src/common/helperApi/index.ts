@@ -25,7 +25,7 @@ export const _onPushLogout = async () => {
 
 export const handleResponseAxios = (res: AxiosResponse): ResponseBase<any> => {
   if (res.data) {
-    return {code: CODE_SUCCESS, status: true, data: res.data, msg: null};
+    return {code: CODE_SUCCESS, status: true, data: res.data?.data, msg: null};
   }
   return responseDefault;
 };

@@ -9,4 +9,5 @@ export const ApiConstants = {
   LOGIN: '',
   REFRESH_TOKEN: '',
 };
-export const appUrl = 'http://localhost:3000/api';
+export const appUrl = 'https://youtube-quiz-api.onrender.com/api';
+// 'http://localhost:3000/api';

@@ -5,6 +5,7 @@ export enum APP_SCREEN {
   MAIN_APP = 'MAIN_APP',
   VIDEO_LIST = 'VIDEO_LIST',
   VIDEO_EDIT = 'VIDEO_EDIT',
+  VIDEO_PLAY = 'VIDEO_PLAY',
 }
 
 export type RootStackParamList = {
@@ -12,6 +13,9 @@ export type RootStackParamList = {
   [APP_SCREEN.HOME]: undefined;
   [APP_SCREEN.VIDEO_LIST]: undefined;
   [APP_SCREEN.VIDEO_EDIT]: {
-    video: IVideo;
+    id: string;
+  };
+  [APP_SCREEN.VIDEO_PLAY]: {
+    id: string;
   };
 };

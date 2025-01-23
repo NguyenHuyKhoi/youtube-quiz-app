@@ -1,3 +1,4 @@
+import {IQuiz} from '@reducer/game_edit';
 import {IChannel} from './channel';
 import {EntityBase, IThumbnail} from './common';
 
@@ -12,6 +13,7 @@ export interface IVideo extends EntityBase {
   description: string;
   channel: IChannel;
   channel_youtube_id: string;
+  best_score?: number;
   duration: number;
   published_at: Date;
   tags: string[];
@@ -19,4 +21,9 @@ export interface IVideo extends EntityBase {
   deleted_at: null;
   thumbnail: IThumbnail;
   statistics: IVideoStatistics;
+  video_begin_time: number;
+  video_end_time: number;
+  quiz_count: number;
+  quiz_time: number;
+  quizzes: IQuiz[];
 }

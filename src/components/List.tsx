@@ -18,6 +18,7 @@ import {
 import {PaginationEntity} from '@model';
 import {sizes} from '@utils';
 import axios from 'axios';
+import {getAuthHeader} from '@src/api';
 
 export const listRef = React.createRef<any>();
 export const list = {};
@@ -53,7 +54,6 @@ export const List = React.forwardRef(
       renderListFooter,
       renderListEmpty,
       searchKey,
-      emptyLabel,
       ignoreData,
       onChangeDataSize,
       scrollEnabled,
@@ -84,7 +84,6 @@ export const List = React.forwardRef(
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [searchCurrentPage, setSearchCurrentPage] = useState<number>(1);
 
-    console.log('List data: ', listData.length);
     const searching = useCallback(() => {
       return searchKey !== undefined && searchKey !== '';
     }, [searchKey]);
@@ -99,7 +98,7 @@ export const List = React.forwardRef(
 
     const handleData = useCallback(() => {
       setLoading(true);
-      console.log('url: ', url);
+
       axios
         .get(url, {
           params: {
@@ -108,6 +107,7 @@ export const List = React.forwardRef(
             search: searching() ? searchKey : undefined,
             per_page: 10,
           },
+          headers: getAuthHeader(),
         })
         .then(response => {
           setLoading(false);
@@ -126,7 +126,8 @@ export const List = React.forwardRef(
             setCurrentPagination(pagination);
           }
         })
-        .catch(() => {
+        .catch(e => {
+          console.log('error get list: ', JSON.stringify(e, null, 2));
           setLoading(false);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
